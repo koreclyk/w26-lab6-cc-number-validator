@@ -6,3 +6,50 @@ MUST:
 
 
 */
+
+// Sections from the text relevant to the program
+/*
+Ch 2 - Variables & Expressions
+>declare variables
+>working with int, String
+>Converting characters to numbers (getDigit)
+~the input is a String but we need to work with digits mathematically
+
+Ch 3 - Conditionals & Logical operators
+>if/else statements
+>boolean expresssions
+>returning true or false
+>checking card length (13-16 digits)
+>validating prefixes (4,5,37,6)
+~isValid() is needed for decision making
+
+Ch 5 - Loops
+>for loops
+>iterating characters in a String
+>Processing digits from right to left (Luhn's algorithm)
+~Luhn's is an audit
+
+Ch 6 - Methods
+>writing methods
+   *isValid(String cardNumber)
+   *sumOfEvens(String cardNumber)
+   *getDigit(char number)
+   *sumOfOdds(String cardNumber)
+>return values
+>pass parameters
+~Needs to be modular... methods need to handle one responsibility
+
+Ch 7 - Strings
+>String.length()
+>String.charAt()
+>startsWith() <-- "iiiiiiiii NEEEEEEEEEEEEEEEEEEEEEEEED IIIIIIIIIIIIIIIIIIIIIIITTT"
+>working with characters
+~REMINDER: card number needs to go in as a String not an int
+
+Ch 7 >>> check length & prefix
+Ch 3 >>> combine validatioin conditioins
+Ch 5 >>> loop through digits for Luhn's
+Ch 2 >>> convert characters to numbers
+
+
+*/
