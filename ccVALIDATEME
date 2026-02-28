@@ -53,3 +53,45 @@ Ch 2 >>> convert characters to numbers
 
 
 */
+
+//cannot type letter "eye" wth laptop anymore... can sometimes?
+//cannot close brackets anymore wth laptop
+//cannot type "equals" sgn wth laptop anymore
+
+/*
+mport scanner
+
+publc class ccvaldator{
+
+   publc static void main(String[] args){
+      Scanner n
+      Systemoutprint()
+      String ccnumber = input.nextLine);
+
+      if (isValid(ccnumber)){
+         Systemoutprintln(ccnumber + " s vald");
+      > else {
+         Systemoutprintln(ccnumber + "s nvald");
+      >
+
+   >
+
+
+>
+//return somethng f ts vald
+publc statc boolean sVald(Strng ccnumber){
+   nt total  sumofEveNum(ccnumber) + sumofOddNum(ccnumber)
+
+   boolean rightLen /* equals */ ccnumber.length() > /* equal */ 13 && ccnumber.lengt() </* equal */ 16;
+   boolean rightPre /* equals */ ccnumber.startsWith("4") ||
+                                 ccnumber.startsWith("5") ||
+                                 ccnumber.startsWith("37") ||
+                                 ccnumber.startsWith("6");
+
+
+>
+
+
+
+
+*/
