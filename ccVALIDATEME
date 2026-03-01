@@ -50,8 +50,126 @@ Ch 7 >>> check length & prefix
 Ch 3 >>> combine validatioin conditioins
 Ch 5 >>> loop through digits for Luhn's
 Ch 2 >>> convert characters to numbers
+*/
+
+//try3
+//REMINDER: it's indexing BACKWARDS!!!!
+/*
+/*
+import
+
+class{
+   static void main scanner{
+   init cardNumber
+   validate
+   }
+*/
+
+import java.util.Scanner;
+
+public class ccValidateMe{
+   public static void main(String[] args){
+   //Scanner input = new Scanner; >>>this is treating the Scanner like a variable rather than an object
+   Scanner input = new Scanner(System.in);
+   System.out.print("Enter a credit card number: ");
+   String cardNumber = input.nextLine();
+   
+      if (isValid(cardNumber)){
+         System.out.print(cardNumber + " is valid");
+      } else {
+         System.out.print(cardNumber + " is NOT valid");
+      }
+   
+   }
+   //logic controller
+   public static boolean isValid(String cardNumber){
+      //13-16 digits?
+      boolean rightLen = cardNumber.length() >= 13 && cardNumber.length() <= 16;
+
+      //prefix 4/5/37/6?
+      boolean rightPre = cardNumber.startsWith("4") || //visa
+                         cardNumber.startsWith("5") || //master
+                         cardNumber.startsWith("37") || //AMEX
+                         cardNumber.startsWith("6"); //discover
+
+      int totalSum = sumOfDoubleEvenPlace(cardNumber) + sumOfOddPlace(cardNumber);
+      boolean luhnSays = (totalSum % 10 == 0); // must be divisible by 10
+         return rightLen && rightPre && luhnSays;
+
+   }
+
+   public static int sumOfDoubleEvenPlace(String cardNumber){ //second from RIGHT
+      int total = 0;
+      for (int i = cardNumber.length() - 2;
+         i >= 0; i -= 2){
+
+         char c = cardNumber.charAt(i); //current position
+         int doubled = getDigit(c) * 2; //double down
+
+         if (doubled >- 10){
+            total += (doubled / 10) + (doubled % 10);
+         } else {
+            total += doubled;
+         }
+      }
+      return total;
+
+   }
+
+  public static int getDigit(Char number){ //turn an object into a number
+     return Character.getNumVal(number);
+  }
+
+  public static int sumOfOddPlace(String cardNumber){
+     int total = 0;
+     for (int i = cardNumber.length() - 1; i >= 0; i -= 2){
+        total += getDigit(cardNumber.charAt(i));
+     }
+     return total;
+
+  }
+
+}
+*/
+
+//try2
+/*
+
+import java.util.Scanner;
+
+public class ccValidateMe{
+   public static void main(String[] args){
+   Scanner input = new Scanner;
+   System.out.print("Enter a credit card number: ");
+   String ccNumber = input.nextLine();
+   
+      if (isValid(ccNumber)){
+         System.out.print(ccNumber + " is valid");
+      } else {
+         System.out.print(ccNumber + " is NOT valid");
+      }
+   
+   }
+   
+   public static boolean isValid(String ccNumber){
+      boolean rightLen = ccNumber.length() >= 13 &&
+                         ccNumber.length() <= 16;
+      boolean rightPre = ccNumber.startsWith("4") ||
+                         ccNumber.startsWith("5") ||
+                         ccNumber.startsWith("37") ||
+                         ccNumber.startsWith("6");
+                         
+      int totalSum = sumofEveNum(ccNumber) + sumofOddNum(ccNumber);
+      boolean luhnSays = (totalSum % 10 == 0);
+         return rightLen && rightPre && luhnSays;
+   
+   }
 
 
+*/
+
+
+//try1
 */
 
 //cannot type letter "eye" wth laptop anymore... can sometimes?
