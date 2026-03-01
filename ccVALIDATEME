@@ -52,7 +52,195 @@ Ch 5 >>> loop through digits for Luhn's
 Ch 2 >>> convert characters to numbers
 */
 
+//try5 - SUBMIT
+/*
+import java.util.Scanner;
+
+public class ccValidateMe{
+   public static void main(String[] args){
+     Scanner input = new Scanner(System.in);
+     String checkAgain = "y";
+     
+     System.out.print("\t\t   ~Welcome to your~\n\t\t~Credit Card Validator!~\n\n");
+
+     while (checkAgain.equalsIgnoreCase("Y")){
+       System.out.print("\n\nEnter a credit card number: ");
+       String cardNumber = input.nextLine();
+     
+        if (isValid(cardNumber)){ //what's what
+           if (cardNumber.startsWith("4")){
+              System.out.println("Your card is a Visa.");
+           } else if (cardNumber.startsWith("5")){
+              System.out.println("Your card is a MasterCard.");
+           } else if (cardNumber.startsWith("37")){
+              System.out.println("Your card is an American Express.");
+           } else if (cardNumber.startsWith("6")){
+              System.out.println("Your card is a Discover.");
+           }
+
+           System.out.print("Your card is valid");
+        } else {
+           System.out.print("Your card is NOT valid");
+        }
+
+        System.out.print("\n\nDo you want to check another credit card number? <Y> or <N>: ");
+        checkAgain = input.nextLine();
+     }
+
+     System.out.println("\n\n\t\t\t~~~~~Bye! Have a beautiful time!");     
+     
+   }
+   
+   //logic controller
+   public static boolean isValid(String cardNumber){
+      //13-16 digits?
+      boolean rightLen = cardNumber.length() >= 13 && cardNumber.length() <= 16;
+
+      //prefix 4/5/37/6?
+      boolean rightPre = cardNumber.startsWith("4") || //visa
+                         cardNumber.startsWith("5") || //master
+                         cardNumber.startsWith("37") || //AMEX
+                         cardNumber.startsWith("6"); //discover
+
+      int totalSum = sumOfDoubleEvenPlace(cardNumber) + sumOfOddPlace(cardNumber);
+      boolean luhnSays = (totalSum % 10 == 0); // must be divisible by 10
+         return rightLen && rightPre && luhnSays;
+
+   }
+
+   public static int sumOfDoubleEvenPlace(String cardNumber){ //second from RIGHT
+      int total = 0;
+      for (int i = cardNumber.length() - 2;
+         i >= 0; i -= 2){
+
+         char c = cardNumber.charAt(i); //current position
+         int doubled = getDigit(c) * 2; //double down
+
+         if (doubled >- 10){ //just needs to be bigger than negative 10
+            total += (doubled / 10) + (doubled % 10); //adding sums
+         } else {
+            total += doubled; //add the SINGLE digit
+         }
+      }
+      return total; //gib
+
+   }
+
+  public static int getDigit(char number){ //turn an object into a number
+     return Character.getNumericValue(number);
+  }
+
+  public static int sumOfOddPlace(String cardNumber){
+     int total = 0;
+     for (int i = cardNumber.length() - 1; i >= 0; i -= 2){ //init i, the condition, the change
+        total += getDigit(cardNumber.charAt(i));
+     }
+     return total; //gib
+
+  }
+
+}
+
+
+*/
+
+//try4
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/*
+import java.util.Scanner;
+
+public class ccValidateMe{
+   public static void main(String[] args){
+     Scanner input = new Scanner(System.in);
+     //String checkAgain = "yes"; PROGRAM JUST ENDED >>>yes is not y so it ended
+     String checkAgain = "y"; 
+
+     System.out.print("\t\tWelcome to your\n\t\tCredit Card Validator!~\n\n");
+
+     while (checkAgain.equalsIgnoreCase("Y")){
+       System.out.print("Enter a credit card number: ");
+       String cardNumber = input.nextLine();
+     
+        if (isValid(cardNumber)){
+           if (cardNumber.startsWith("4")){
+              System.out.println("Your card is a Visa.");
+           } else if (cardNumber.startsWith("5")){
+              System.out.println("Your card is a MasterCard.");
+           } else if (cardNumber.startsWith("37")){
+              System.out.println("Your card is an American Express.");
+           } else if (cardNumber.startsWith("6")){
+              System.out.println("Your card is a Discover.");
+           }
+
+           System.out.print("Your card is valid");
+        } else {
+           System.out.print("Your card is NOT valid");
+        }
+
+        System.out.print("\n\nDo you want to check another credit card number? <Y> or <N>: ");
+        checkAgain = input.nextLine();
+     }
+
+     System.out.println("\n\nPress any key to continue...");     
+     
+   }
+   
+   //logic controller
+   public static boolean isValid(String cardNumber){
+      //13-16 digits?
+      boolean rightLen = cardNumber.length() >= 13 && cardNumber.length() <= 16;
+
+      //prefix 4/5/37/6?
+      boolean rightPre = cardNumber.startsWith("4") || //visa
+                         cardNumber.startsWith("5") || //master
+                         cardNumber.startsWith("37") || //AMEX
+                         cardNumber.startsWith("6"); //discover
+
+      int totalSum = sumOfDoubleEvenPlace(cardNumber) + sumOfOddPlace(cardNumber);
+      boolean luhnSays = (totalSum % 10 == 0); // must be divisible by 10
+         return rightLen && rightPre && luhnSays;
+
+   }
+
+   public static int sumOfDoubleEvenPlace(String cardNumber){ //second from RIGHT
+      int total = 0;
+      for (int i = cardNumber.length() - 2;
+         i >= 0; i -= 2){
+
+         char c = cardNumber.charAt(i); //current position
+         int doubled = getDigit(c) * 2; //double down
+
+         if (doubled >- 10){
+            total += (doubled / 10) + (doubled % 10);
+         } else {
+            total += doubled;
+         }
+      }
+      return total;
+
+   }
+
+  public static int getDigit(char number){ //turn an object into a number
+     return Character.getNumericValue(number);
+  }
+
+  public static int sumOfOddPlace(String cardNumber){
+     int total = 0;
+     for (int i = cardNumber.length() - 1; i >= 0; i -= 2){
+        total += getDigit(cardNumber.charAt(i));
+     }
+     return total;
+
+  }
+
+}
+
+
+*/
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 //try3
+//IT RUNS!!!!.... but this is only for one card and no redos...
 //REMINDER: it's indexing BACKWARDS!!!!
 /*
 /*
@@ -69,7 +257,7 @@ import java.util.Scanner;
 
 public class ccValidateMe{
    public static void main(String[] args){
-   //Scanner input = new Scanner; >>>this is treating the Scanner like a variable rather than an object
+   //Scanner input = new Scanner; >>>ERROR: expected '(' or '[': this is treating the Scanner like a variable rather than an object
    Scanner input = new Scanner(System.in);
    System.out.print("Enter a credit card number: ");
    String cardNumber = input.nextLine();
@@ -116,8 +304,11 @@ public class ccValidateMe{
 
    }
 
-  public static int getDigit(Char number){ //turn an object into a number
-     return Character.getNumVal(number);
+  //turn an object into a number
+  //public static int getDigit(Char number){ ERROR: cannot find symbol >>>why did I upper case char?
+    public static int getDigit(char number){
+     //return Character.getNumVal(number); ERROR: cannot find symbol >>>java doesn't like cute words
+     Character.getNumericValue(number);
   }
 
   public static int sumOfOddPlace(String cardNumber){
